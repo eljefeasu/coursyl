@@ -14,3 +14,25 @@
 //= require jquery_ujs
 //= require d3
 //= require_tree .
+
+
+function submitOnce(button){
+  button.disabled = true;
+  button.form.submit();
+}
+
+function hideEmptyRow(){
+  var count = document.getElementsByClassName("association container").length;
+  var lastRow = document.getElementsByClassName("association container")[count - 1];
+  lastRow.style.display = 'none';
+}
+
+function addGradeThreshold(){
+  var count = document.getElementsByClassName("association container").length;
+  var lastRow = document.getElementsByClassName("association container")[count - 1];
+  lastRow.style.display = 'block';
+}
+
+function deleteRow(button){
+  button.parentElement.parentElement.style.display = 'none';
+}
