@@ -2,9 +2,6 @@
 
 <%= render partial: "summary_box", locals: {course: @course, :header => true} %>
 
-
-
-
 <section id="first-section">
   <a id="anchor-description" class="anchor-course"></a>
   <% if current_user && current_user.teaching?(@course) %>
@@ -204,6 +201,19 @@
             <% end %>
             <td><%= percentage(a.percent_of_grade) %></td>
             <td class="text-right">
+              <a href="#myModal<%="#{a.id}"%>" data-toggle="modal">
+                <%= '<i class="fa fa-calendar" title="Change Dates"></i>'.html_safe %>
+              </a>
+              <!-- Modal -->
+              <div id="myModal<%="#{a.id}"%>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                  <h3 id="myModalLabel"><%= a.name %></h3>
+                </div>
+                <div class="modal-body">
+                    <%= render partial: "modal", locals: {a: a} %>
+                  </div>
+              </div>
               <%= render partial: "/assignments/row_buttons", locals: {assignment: a} %>
             </td>
           </tr>

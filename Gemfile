@@ -1,3 +1,7 @@
+source 'https://rails-assets.org' do
+  gem 'rails-assets-datetimepicker'
+end
+
 source 'https://rubygems.org'
 
 ruby "2.3.0"
@@ -32,6 +36,7 @@ gem 'redcarpet'
 gem 'd3-rails'
 gem 'rails-reveal-js'
 gem 'font-awesome-rails'
+
 
 gem 'devise'
 

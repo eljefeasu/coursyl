@@ -13,26 +13,40 @@
 //= require jquery
 //= require jquery_ujs
 //= require d3
+//= require datetimepicker
 //= require_tree .
 
 
-function submitOnce(button){
-  button.disabled = true;
-  button.form.submit();
+function submitOnce(){
+  $(event.target).prop("disabled", true);
+  $(event.target).closest("form").submit();
 }
+
+function bindSubmitClick(){
+  $("input[type=submit]").on("click", submitOnce);
+}
+
+$(bindSubmitClick);
 
 function hideEmptyRow(){
-  var count = document.getElementsByClassName("association container").length;
-  var lastRow = document.getElementsByClassName("association container")[count - 1];
-  lastRow.style.display = 'none';
+  $(".container").last().css("display", "none");
 }
+
+$(hideEmptyRow);
 
 function addGradeThreshold(){
-  var count = document.getElementsByClassName("association container").length;
-  var lastRow = document.getElementsByClassName("association container")[count - 1];
-  lastRow.style.display = 'block';
+  $(".btn.btn-success").on("click", function(){
+    $(".container").last().css("display", "block");
+  })
 }
 
-function deleteRow(button){
-  button.parentElement.parentElement.style.display = 'none';
+function deleteRow(){
+  $(event.target).closest(".association.container").css("display", "none");
+  $(event.target).siblings().last().prop("checked", true);
 }
+
+function dateTimePicker(){
+  $('.datetimepicker').datetimepicker();
+}
+
+$(dateTimePicker);

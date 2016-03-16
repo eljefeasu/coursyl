@@ -1,0 +1,21 @@
+<%= form_for(a) do |f| %>
+  <% if a.errors.any? %>
+    <div class="alert alert-error">
+      <ul>
+      <% a.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label :due_at do %>
+    <span class="field-label">Due Date/Time</span> <%= f.text_field :due_at, required: true, class: "datetimepicker", value: db_datetime_string(a.due_at) %>
+    <span class="help-inline">e.g. "<%= Date.today %> 14:00"</span>
+  <% end %>
+  
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit class: "btn btn-primary" %>
+  </div>
+  <% end %>
