@@ -40,10 +40,18 @@ function addGradeThreshold(){
   })
 }
 
+$(addGradeThreshold);
+
 function deleteRow(){
   $(event.target).closest(".association.container").css("display", "none");
   $(event.target).siblings().last().prop("checked", true);
 }
+
+function bindDeleteClick(){
+  $(".btn.btn-danger").on("click", deleteRow);
+}
+
+$(bindDeleteClick);
 
 function dateTimePicker(){
   $('.datetimepicker').datetimepicker();
